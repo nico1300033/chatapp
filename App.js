@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { createStackNavigator } from 'react-navigation'; 
-import Main from 'Main.js';
-import Chat from 'Chat.js';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
+import { firebaseConfig } from './config';
+import firebase from 'firebase';
 
+firebase.initializeApp(firebaseConfig);
 
-// Create the navigator
-const navigator = createStackNavigator({
-  Main: { screen: Main },
-  Chat: { screen: Chat },
+import Tabs from './tabs';
+
+const stackNavigator = createStackNavigator({
+  Tabs: Tabs
+
 });
 
-export default navigator
+export default createAppContainer(stackNavigator)
+
